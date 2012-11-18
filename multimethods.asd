@@ -1,12 +1,8 @@
 ;;;; -*-Lisp-*- 
 (in-package :cl-user)
 
-(defpackage :multimethods-system (:use :cl))
-(in-package :multimethods-system)
-
-(asdf:defsystem :multimethods
-  ;; external dependencies go here
-  :depends-on (:alexandria)
+(asdf:defsystem #:multimethods
+  :depends-on (#:alexandria)
   :components 
    ((:module "src" 
              :serial t
@@ -14,3 +10,12 @@
               ((:file "package")
                (:file "multimethods")))))
 
+(asdf:defsystem #:multimethods-test
+  ;; external dependencies go here
+  :depends-on (#:multimethods #:alexandria #:fiveam)
+  :components 
+   ((:module "test" 
+             :serial t
+             :components 
+              ((:file "package")
+               (:file "multimethods")))))
