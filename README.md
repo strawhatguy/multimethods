@@ -1,5 +1,4 @@
-
-        Multimethods for Common Lisp
+# Multimethods for Common Lisp
 
 Basically, clojure has this notion of multimethods, where the
 dispatching function is determined by the user at definition time.
@@ -7,9 +6,10 @@ dispatching function is determined by the user at definition time.
 Common Lisp's generic methods from CLOS are similar, but dispatch
 solely on the types of the arguments.
 
-       Example that the clojure website uses
-       See: http://clojure.org/runtime_polymorphism     
+# Example 
+From the clojure website, see: http://clojure.org/runtime_polymorphism     
 
+```
 (defmulti encounter (:test #'equalp) (x y)
   (list (gethash :species x) (gethash :species y)))
 
@@ -30,3 +30,4 @@ solely on the types of the arguments.
   (assert-equal :eat      (encounter l1 b1))
   (assert-equal :fight    (encounter l1 l2))
   (assert-equal :mate     (encounter b1 b2))))
+```
