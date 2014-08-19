@@ -28,7 +28,7 @@
 (defun (setf get-multimethod-method) (method multimethod dispatch-value)
   (setf (gethash dispatch-value (multimethod-methods multimethod)) method))
 
-(defmacro defmulti (name (&key (test #'equalp)) (&rest args) &body body)
+(defmacro defmulti (name test (&rest args) &body body)
   (with-gensyms (multimethod)
   `(progn
      (setf (get-multimethod ',name) 

@@ -29,7 +29,7 @@ defined with **defmulti**, above.
 From the clojure website, see: http://clojure.org/runtime_polymorphism     
 
 ```
-(defmulti encounter (:test #'equalp) (x y)
+(defmulti encounter #'equalp (x y)
   (list (gethash :species x) (gethash :species y)))
 
 (defmultimethod encounter (list :bunny :lion)  (x y) 

@@ -6,7 +6,7 @@
 (in-suite multimethods-dispatching)
 
 ;;;; example the clojure folks use
-(defmulti encounter (:test #'equalp) (x y)
+(defmulti encounter #'equalp (x y)
   (list (gethash :species x) (gethash :species y)))
 (defmultimethod encounter (list :bunny :lion)  (x y) (declare (ignorable x y)) :run-away)
 (defmultimethod encounter (list :lion :bunny)  (x y) (declare (ignorable x y)) :eat)
