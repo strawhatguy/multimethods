@@ -6,6 +6,25 @@ dispatching function is determined by the user at definition time.
 Common Lisp's generic methods from CLOS are similar, but dispatch
 solely on the types of the arguments.
 
+# API
+defmulti *name* *test* *args* *dispatch*
+
+Create a new multimethod *name*, and define a dispatching function for
+it. Every instance of this mulitmethod must take the arguments in
+*args*. The code in *dispatch* should return a value based on the
+arguments in *args*, and return a value. That value will be compared
+(via test function *test*) to the instance's dispatch value. If *test*
+is non-nil, that instance's method will be invoked.
+
+
+defmultimethod *name* *dispatch-value* *args* *body*
+
+Create an instance of the multimethod. *name* must be defined with
+**defmulti** previously. Executes code in *body* with arguments *args*
+if the *dispatch-value* satisfies the test of the dispatching function
+defined with **defmulti**, above.
+
+
 # Example 
 From the clojure website, see: http://clojure.org/runtime_polymorphism     
 
